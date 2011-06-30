@@ -84,7 +84,14 @@ namespace :vlad do
       commands << "chgrp -R #{perm_group} #{latest_release}" if perm_group
 
       run commands.join(" && ")
-      Rake::Task['vlad:update_symlinks'].invoke
+      
+      ### Update the symlinks for the shared paths
+      unless shared_paths.empty?
+        ops = shared_paths.map do |sp, rp|
+          "ln -s #{shared_path}/#{sp} #{latest_release}/#{rp}"
+        end
+        run ops.join(' && ') unless ops.empty?
+      end
 
       symlink = true
       commands = [
@@ -102,17 +109,6 @@ namespace :vlad do
         symlink
       run "rm -rf #{release_path}"
       raise e
-    end
-  end
-
-  desc "Updates the symlinks for shared paths".cleanup
-
-  remote_task :update_symlinks, :roles => :app do
-    unless shared_paths.empty?
-      ops = shared_paths.map do |sp, rp|
-        "ln -s #{shared_path}/#{sp} #{latest_release}/#{rp}"
-      end
-      run ops.join(' && ') unless ops.empty?
     end
   end
 

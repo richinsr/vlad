@@ -1,3 +1,47 @@
+=== 2.2.5.1 / 2012-06-25
+
+* 1 bug fix:
+  
+  * Updated code to remove the call to update_symlinks from within the update remove task. (richinsr)
+
+=== 2.2.5 / 2012-02-22
+
+* 1 bug fix:
+
+  * Fixed migrate task description. (SixArms)
+
+=== 2.2.4 / 2011-12-21
+
+* 2 bug fixes:
+
+  * Add task descriptions to maintenance tasks (SixArm)
+  * Updated blog link. (SixArm)
+
+=== 2.2.3 / 2011-10-14
+
+* 2 bug fixes:
+
+  * Removed open4 dependency since that comes in via rake-remote_task
+  * Set a sane default for skip_scm (charl)
+
+=== 2.2.2 / 2011-09-06
+
+* 1 minor enhancement:
+
+  * Added FAQ item about bundler breaking stuff. *sigh*
+
+* 3 bug fixes:
+
+  * Fix an scm bug when using skip_scm (richinsr)
+  * Fixed typo in variables (flog->flag). (appfertigung)
+  * Fixed vlad:start_app for passenger computing a new latest_release (dbloete)
+
+=== 2.2.1 / 2011-06-22
+
+* 1 bug fix:
+
+  * Switched rake dependency to ~> 0.8 so we don't collide with other libs
+
 === 2.2.0 / 2011-02-18
 
 * 5 minor enhancements:

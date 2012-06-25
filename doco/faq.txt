@@ -100,6 +100,7 @@ OR: Alternatively, you can do this within your recipes like so:
 
   ControlMaster auto
   ControlPath ~/.ssh/master-%r@%h:%p
+  ControlPersist 1h
 
 === Q: I'm tired of typing in my password!
 === A: Me too!
@@ -113,8 +114,8 @@ If you're on a mac (on tiger, not leopard), use SSHKeychain, we love it. <http:/
 === Q: How do I use Vlad with a gateway?
 === A: Add the following to your deploy.rb variables:
 
-  set :ssh_flags, "-A #{mygateway}"
-  set :rsync_flags, "--rsh ssh -A #{mygateway} ssh"
+  set :ssh_flags,   ['-A', mygateway, 'ssh', '-A']
+  set :rsync_flags, ['--rsh', 'ssh', '-A', mygateway, 'ssh']
 
 === Q: OMG subversion is stupid! It keeps asking for "Authentication Realm"
 === A: Yes, yes it is.
@@ -134,3 +135,16 @@ checkout over ssh should work fine.
     ... works fine ...
   % ssh localhost svn co https://blah/blah /tmp/happy2
     ... works fine ...
+
+
+== Using Bundler
+
+=== Q: OMG Bundler is stupid! It requires vlad in my app and that breaks stuff!
+=== A: Yes, yes it is.
+
+As far as we're concerned, that "feature" in bundler is a bug. One
+workaround is to tell bundler not to require vlad for you.
+
+  group :development do
+    gem 'vlad', :require => false
+  end

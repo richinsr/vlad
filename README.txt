@@ -1,7 +1,8 @@
 = Vlad the Deployer by the Ruby Hit Squad
 
-* http://rubyhitsquad.com/
-* http://rubyforge.org/projects/hitsquad/
+home :: http://rubyhitsquad.com/
+repo :: https://github.com/seattlerb/vlad
+rdoc :: http://hitsquad.rubyforge.org/vlad
 
 == DESCRIPTION
 
@@ -15,7 +16,7 @@ Impale your application on the heartless spike of the Deployer.
 == FEATURES/PROBLEMS
 
 * Full deployment automation stack.
-* Turnkey deployment for mongrel+apache+svn.
+* Turnkey deployment for passenger+apache+svn.
 * Supports single server deployment with just 3 variables defined.
 * Built on rake. Easy. Engine is small.
 * Very few dependencies. All simple.
@@ -37,9 +38,7 @@ Impale your application on the heartless spike of the Deployer.
 == REQUIREMENTS
 
 * Rake
-* Hoe
-* Rubyforge
-* open4
+* rake-remote_task
 
 == INSTALL
 
@@ -56,7 +55,7 @@ Impale your application on the heartless spike of the Deployer.
 
 (The MIT License)
 
-Copyright (c) 2007-2009 Ryan Davis and the rest of the Ruby Hit Squad
+Copyright (c) Ryan Davis and the rest of the Ruby Hit Squad
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

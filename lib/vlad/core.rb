@@ -112,6 +112,17 @@ namespace :vlad do
     end
   end
 
+  desc "Updates the symlinks for shared paths".cleanup
+
+  remote_task :update_symlinks, :roles => :app do
+    unless shared_paths.empty?
+      ops = shared_paths.map do |sp, rp|
+        "ln -s #{shared_path}/#{sp} #{latest_release}/#{rp}"
+      end
+      run ops.join(' && ') unless ops.empty?
+    end
+  end
+
   desc "Invoke a single command on every remote server. This is useful for
     performing one-off commands that may not require a full task to be written
     for them.  Simply specify the command to execute via the COMMAND
